@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cmpgbxi4vtl0e"]
+
+[ext_resource type="PackedScene" uid="uid://3vfxqffkdpmm" path="res://Other_Items/Tilemaps/tilemap.tscn" id="1_mwjvy"]
+[ext_resource type="PackedScene" uid="uid://bq12ehr63qfoy" path="res://Player/player.tscn" id="2_mrf6p"]
+[ext_resource type="PackedScene" uid="uid://dboyufv4a75wl" path="res://Other_Items/box.tscn" id="4_10mtb"]
+
+[node name="Node2D" type="Node2D" unique_id=1985045730]
+
+[node name="Tilemap" parent="." unique_id=1461505635 instance=ExtResource("1_mwjvy")]
+
+[node name="Player" parent="." unique_id=962576208 instance=ExtResource("2_mrf6p")]
+position = Vector2(87, 138)
+
+[node name="box" parent="." unique_id=1592744020 instance=ExtResource("4_10mtb")]
+position = Vector2(219, 108)
+
+[node name="box2" parent="." unique_id=1923618446 instance=ExtResource("4_10mtb")]
+position = Vector2(248, 61)
+
+[node name="box3" parent="." unique_id=272973061 instance=ExtResource("4_10mtb")]
+position = Vector2(147, 89)
+
+[node name="box4" parent="." unique_id=2120999543 instance=ExtResource("4_10mtb")]
+position = Vector2(186, 109)

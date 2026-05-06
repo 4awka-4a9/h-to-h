@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cih47fcqbyk35"]
+
+[ext_resource type="Script" uid="uid://b7deda3s6lkjw" path="res://Other_Items/Traps/spike_1.gd" id="1_a8rt8"]
+[ext_resource type="Texture2D" uid="uid://cddsu5watk2o1" path="res://Assets/Traps/trap1.png" id="1_rho8h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmqng"]
+size = Vector2(18, 31)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_a8rt8"]
+b = Vector2(0, 338)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8rt8"]
+size = Vector2(4.5, 2)
+
+[node name="Node2D" type="RigidBody2D" unique_id=952455637]
+freeze = true
+script = ExtResource("1_a8rt8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1413835529]
+texture = ExtResource("1_rho8h")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=489398046]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_mmqng")
+
+[node name="player_detector" type="Area2D" parent="." unique_id=1833623701]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detector" unique_id=1342163008]
+shape = SubResource("SegmentShape2D_a8rt8")
+
+[node name="damager" type="Area2D" parent="." unique_id=2057013729]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="damager" unique_id=690473892]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_a8rt8")
+debug_color = Color(0.9772963, 0, 0.40889302, 0.41960785)
+
+[connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_entered" from="damager" to="." method="_on_damager_body_entered"]

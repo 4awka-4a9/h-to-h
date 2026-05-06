@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bqu4oir3moki7"]
+
+[ext_resource type="Texture2D" uid="uid://j0bpx2q61bud" path="res://Assets/Game_items/switch.png" id="1_dr18t"]
+[ext_resource type="Script" uid="uid://cmulq5ls2vfgu" path="res://Other_Items/Game_items/switch.gd" id="1_w6apd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6apd"]
+atlas = ExtResource("1_dr18t")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxjao"]
+atlas = ExtResource("1_dr18t")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gcy6o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6apd")
+}],
+"loop": true,
+"name": &"Off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxjao")
+}],
+"loop": true,
+"name": &"On",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w6apd"]
+radius = 54.037025
+
+[node name="Node2D" type="Area2D" unique_id=415954862]
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_w6apd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=372547796]
+sprite_frames = SubResource("SpriteFrames_gcy6o")
+animation = &"Off"
+autoplay = "Off"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=779032981]
+shape = SubResource("CircleShape2D_w6apd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

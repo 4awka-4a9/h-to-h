@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bm0w1rxfncx0y"]
+
+[ext_resource type="Script" uid="uid://be16y4do7veqj" path="res://Scenes/Levels/camera_2d.gd" id="1_ucfpo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0h5h"]
+
+[node name="Camera2D" type="Camera2D" unique_id=471378780]
+zoom = Vector2(2, 2)
+script = ExtResource("1_ucfpo")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=997179206]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=785023962]
+visible = false
+scale = Vector2(48, 27)
+shape = SubResource("RectangleShape2D_m0h5h")
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

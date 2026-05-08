@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cih47fcqbyk35" path="res://Other_Items/Traps/Spike1.tscn" id="4_0xrym"]
 [ext_resource type="PackedScene" uid="uid://bm0w1rxfncx0y" path="res://Other_Items/Camera/camera_2d.tscn" id="5_c0r4e"]
 [ext_resource type="PackedScene" uid="uid://bqu4oir3moki7" path="res://Other_Items/Game_items/Switch.tscn" id="6_m0h5h"]
+[ext_resource type="PackedScene" uid="uid://13drxwdn0pxl" path="res://Other_Items/Game_items/Door.tscn" id="7_20uw2"]
 
 [node name="Node2D" type="Node2D" unique_id=1729322455]
 
@@ -29,5 +30,8 @@ position = Vector2(360, 180)
 [node name="Node2D2" parent="." unique_id=1297423312 instance=ExtResource("4_0xrym")]
 position = Vector2(488, 48)
 
-[node name="Node2D3" parent="." unique_id=415954862 instance=ExtResource("6_m0h5h")]
+[node name="Switch" parent="." unique_id=415954862 instance=ExtResource("6_m0h5h")]
 position = Vector2(392, 264)
+
+[node name="Door" parent="." unique_id=1555723084 instance=ExtResource("7_20uw2")]
+position = Vector2(624, 240)

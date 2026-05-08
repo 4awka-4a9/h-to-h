@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://13drxwdn0pxl"]
+
+[ext_resource type="Texture2D" uid="uid://cusb0p844qk0c" path="res://Assets/Game_items/door.png" id="1_d4ane"]
+[ext_resource type="Script" uid="uid://bxxh1ty4yydmi" path="res://Other_Items/Game_items/door.gd" id="1_pbelt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbelt"]
+atlas = ExtResource("1_d4ane")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd6i5"]
+atlas = ExtResource("1_d4ane")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vr0ny"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbelt")
+}],
+"loop": true,
+"name": &"Closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd6i5")
+}],
+"loop": true,
+"name": &"Open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00pn0"]
+size = Vector2(32, 64)
+
+[node name="Door" type="Area2D" unique_id=1555723084]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_pbelt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1225931531]
+sprite_frames = SubResource("SpriteFrames_vr0ny")
+animation = &"Open"
+autoplay = "Closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=629179657]
+shape = SubResource("RectangleShape2D_00pn0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

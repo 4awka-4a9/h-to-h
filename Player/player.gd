@@ -29,6 +29,7 @@ func _physics_process(delta: float) -> void:
 				jump_logic()
 	else:
 		queue_free()
+		get_tree().change_scene_to_file("res://Scenes/Levels/level1.tscn")
 		
 	move_and_slide()
 	update_animations()

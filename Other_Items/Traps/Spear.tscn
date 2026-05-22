@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c40fbqlyh6ll2"]
+
+[ext_resource type="Texture2D" uid="uid://cpe76camfdqj7" path="res://Assets/Traps/spear_trap.png" id="1_lc7f0"]
+[ext_resource type="Script" uid="uid://dpov0a8te23ta" path="res://Other_Items/Traps/spear.gd" id="1_tdy3r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nvg40"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lc7f0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mwe4i"]
+radius = 4.0
+height = 8.0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vt3se"]
+a = Vector2(0, -56)
+b = Vector2(0, 63)
+
+[node name="Node2D" type="Area2D" unique_id=779816695]
+z_index = -1
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_tdy3r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1387952024]
+sprite_frames = SubResource("SpriteFrames_nvg40")
+
+[node name="collision_spear" type="CollisionShape2D" parent="." unique_id=1564642086]
+position = Vector2(0, -60)
+shape = SubResource("CapsuleShape2D_mwe4i")
+
+[node name="collision_stick" type="CollisionShape2D" parent="." unique_id=1970567838]
+shape = SubResource("SegmentShape2D_vt3se")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -4,6 +4,9 @@ enum State {CLOSED, OPEN}
 var current_state = State.CLOSED
 
 @onready var anim = $AnimatedSprite2D
+@onready var curent_scene = get_parent().name
+@onready var curent_scene_number = curent_scene.replace("level", "")
+@onready var next_level = str(curent_scene_number.to_int() + 1)
 
 var is_inside = false
 
@@ -49,7 +52,7 @@ func _on_switch_toggled(is_on: bool):
 
 func escape():
 	if is_inside and Input.is_action_just_pressed("Interact"):
-		get_tree().change_scene_to_file("res://Scenes/Menu/ Main_menu.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Levels/level" + next_level + ".tscn")
 
 func label_create():
 	new_UI_interact = UI_interact.instantiate()

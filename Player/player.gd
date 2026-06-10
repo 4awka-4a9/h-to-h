@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var anim = $AnimatedSprite2D
+@onready var curent_scene = get_parent().name
 
 enum State {IDLE, MOVE, JUMP, FALL}
 var current_state = State.IDLE
@@ -11,6 +12,7 @@ const JUMP_VELOCITY = -250
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	print(curent_scene)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -29,10 +31,11 @@ func _physics_process(delta: float) -> void:
 				jump_logic()
 	else:
 		queue_free()
-		get_tree().change_scene_to_file("res://Scenes/Levels/level1.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Levels/" + curent_scene + ".tscn")
 		
 	move_and_slide()
 	update_animations()
+	restart()
 
 func idle_logic():
 	
@@ -88,3 +91,7 @@ func update_animations():
 			anim.play("Move")
 		State.JUMP, State.FALL:
 			anim.play("Fall")
+
+func restart():
+	if Input.is_action_just_pressed("Restart"):
+		get_tree().change_scene_to_file("res://Scenes/Levels/" + curent_scene + ".tscn")
